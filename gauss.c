@@ -1,7 +1,3 @@
-//
-// Created by Yaroslav on 04.05.2024.
-//
-
 #include "gauss.h"
 
 Matrix *matrix_gauss(Matrix *m, size_t *indexes) {
