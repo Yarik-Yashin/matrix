@@ -24,26 +24,28 @@ int main() {
     }
     double *solution = solve_system(slau);
     printf("Решение:");
-    for (int i = n - 1; i >= 0; --i) {
+    for (size_t i = 0; i < n; i++) {
         printf("%lf ", solution[i]);
 
     }
+    free(solution);
     printf("\n");
 
     matrix_free(slau);
 
     printf("Введите размер матрицы для матричной экспоненты\n");
     scanf("%zd", &n);
-    Matrix * ex = matrix_alloc_square(n);
+    Matrix *ex = matrix_alloc_square(n);
     printf("Введите матрицу\n");
     for (size_t i = 0; i < n; ++i) {
-        for (size_t j = 0; j < n + 1; ++j) {
+        for (size_t j = 0; j < n; ++j) {
             scanf("%lf", &t);
             add_element(ex, i, j, t);
         }
     }
-
+    Matrix *tmp = ex;
     ex = matrix_exp(ex, 0.0001);
+    matrix_free(tmp);
     print_matrix(ex);
 
     matrix_free(ex);

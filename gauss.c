@@ -35,6 +35,7 @@ double *solve_system(Matrix *matrix) {
         indexes[i] = i;
     }
     matrix = matrix_gauss(matrix, indexes);
+    double *x1 = malloc(sizeof(double) * get_height(matrix));
     double *x = malloc(sizeof(double) * get_height(matrix));
     double a = 1;
     const double eps = 0.0001;
@@ -54,6 +55,11 @@ double *solve_system(Matrix *matrix) {
         x[indexes[i - 1]] = t;
     }
     free(indexes);
-    return x;
+    for (size_t i = 0; i < get_height(matrix); ++i) {
+        x1[i] = x[get_height(matrix) - 1 - i];
+
+    }
+    free(x);
+    return x1;
 }
 
