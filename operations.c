@@ -96,16 +96,19 @@ Matrix *add_string(Matrix *m1, size_t s1, size_t s2) {
     for (size_t i = 0; i < get_width(m1); ++i) {
         add_element(m1, s1, i, get_element(m1, s1, i) + get_element(m1, s2, i));
     }
+    return m1;
 }
-Matrix *add_string_multiplied_on_const(Matrix *m1, size_t s1, size_t s2, double a){
+
+Matrix *add_string_multiplied_on_const(Matrix *m1, size_t s1, size_t s2, double a) {
     for (size_t i = 0; i < get_width(m1); ++i) {
         add_element(m1, s1, i, get_element(m1, s1, i) + a * get_element(m1, s2, i));
     }
+    return m1;
 }
 
 double matrix_norm(Matrix *m1) {
     double a = -1.0 / 0.0;
-    double c = 0;
+    double c;
 
     for (size_t i = 0; i < get_height(m1); ++i) {
         c = 0;
